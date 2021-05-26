@@ -1,0 +1,253 @@
+p {
+  font-family: "Montserrat", sans-serif;
+}
+
+.hamburger div {
+  width: 35px;
+  height: 4px;
+  background: black;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.hamburger {
+  width: 70px;
+  height: 100%;
+}
+
+.navbar {
+  height: 65px;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+.sidebar {
+  height: 650px;
+  overflow: hidden;
+  position: absolute;
+  background: white;
+  border-bottom-left-radius: 5px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar a {
+  display: block;
+  padding: 20px;
+  color: #fff;
+  position: relative;
+  margin-bottom: 1px;
+  color: grey;
+}
+
+.sidebar a:hover {
+  background: #feeae6;
+  color: #fc8371;
+}
+
+.img-container {
+  position: relative;
+  justify-content: center;
+}
+
+.img {
+  border-radius: 5px;
+  width: 100%;
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+.img-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.main {
+  height: 650px;
+  padding: 20px;
+  padding-left: 80px;
+  overflow: auto;
+  background-color: #f5f6f8;
+  font-size: 15px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  display: flex;
+}
+
+.icon {
+  padding-right: 10px;
+  color: green;
+}
+
+.cartbar {
+  display: flex;
+  padding-top: 10px;
+  align-items: center;
+  height: 65px;
+  padding-left: 150px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  font-family: "Montserrat", sans-serif;
+}
+
+.circle {
+  margin-left: 10px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #199ec4;
+  text-align: center;
+  color: white;
+}
+
+.cartContent {
+  height: 650px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  align-items: flex-start;
+}
+
+.cart-items {
+  height: 280px;
+  overflow: auto;
+}
+
+.empty-cart {
+  text-align: center;
+}
+
+.emptyIcon {
+  height: 100px;
+  width: 100px;
+  margin: 50px 150px 10px;
+}
+
+.cart-img {
+  height: 75px;
+  width: 75px;
+  margin-right: 20px;
+}
+
+.change-box {
+  display: flex;
+  margin-top: 5px;
+}
+
+.sign-box {
+  width: 30px;
+  height: 30px;
+  background-color: #eaf5fa;
+  border: 1px solid #6ea8c0;
+  margin: 0;
+  font-size: 20px;
+  color: #6ea8c0;
+  text-align: center;
+}
+
+.quantity-box {
+  width: 30px;
+  height: 30px;
+  border-top: 1px solid #6ea8c0;
+  border-bottom: 1px solid #6ea8c0;
+  margin: 0;
+  font-size: 20px;
+  color: #6ea8c0;
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  align-items: flex-end;
+  padding: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+}
+
+.box3 {
+  align-self: flex-end;
+  margin-left: 100px;
+}
+
+.item-total {
+  display: flex;
+  background-color: #eaf5fa;
+  margin: 20px;
+  padding: 20px 20px 0;
+  justify-content: space-between;
+}
+
+.checkout-div {
+  display: flex;
+  background-color: #138c5c;
+  margin: 20px;
+  justify-content: center;
+  position: absolute;
+  bottom: 70px;
+  left: 0px;
+  right: 0px;
+}
+
+.checkout-button {
+  color: white;
+  margin: 0;
+  border: none;
+  background-color: #138c5c;
+  border-radius: 0 !important;
+  font-family: "Montserrat", sans-serif;
+}
+
+.button-box {
+  display: flex;
+  margin: 20px;
+  justify-content: space-between;
+  align-items: stretch;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+.cart-button1 {
+  width: 100%;
+  text-align: center;
+  border: 1px solid #6ea8c0;
+  margin-right: 10px;
+}
+
+.cart-button2 {
+  margin-left: 10px;
+  width: 100%;
+  color: #fc8371;
+  text-align: center;
+  border: 1px solid #fc8371;
+}
+
+.hold-button {
+  color: #6ea8c0;
+  margin: 0;
+  width: 100%;
+  border: 1px solid #6ea8c0;
+  background-color: white;
+  border-radius: 0 !important;
+  font-family: "Montserrat", sans-serif;
+}
+
+.cancel-button {
+  color: #fc8371;
+  margin: 0;
+  width: 100%;
+  border: 1px solid#fc8371;
+  background-color: white;
+  border-radius: 0 !important;
+  font-family: "Montserrat", sans-serif;
+}
