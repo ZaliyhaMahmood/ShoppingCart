@@ -12,23 +12,58 @@ import ItemTotal from "./ItemTotal";
 
 function App() {
   const [items, setItems] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  const updateInput = (searchTerm) => {
+    const filtered = items.filter(item => {
+     return item.name.toLowerCase().includes(searchTerm.toLowerCase())
+    })
+    setSearchTerm(searchTerm);
+    setSearchResults(filtered);
+ }
+
+  function handleChange(event) {
+    const newValue = event.target.value;
+    setSearchTerm(newValue);
+    setSearchResults((prevItems) => {
+      return prevItems.filter((item) => item.includes(searchTerm));
+    });
+  }
 
   function addItem(newItem) {
     setItems((prevItems) => {
       return [...prevItems, newItem];
     });
+    setTotal((current) => current + newItem.price);
+  }
+
+  function deleteItem(newItem) {
+    setItems((prevItems) => {
+      return prevItems.filter((item, index) => {
+        return index !== newItem;
+      });
+    });
+    setTotal((current) => current - newItem.price);
   }
 
   return (
     <div className="container-fluid">
       <div className="row no-gutters">
         <div className="col-lg-8">
-          <Navbar />
+          <Navbar     input={searchTerm} 
+       onChange={updateInput}  />
           <Sidebar />
           <div className="container">
             <div className="main row">
               {food.map((foodItem) => (
                 <div className="col-lg-4 col-md-6">
+                  <ul>
+                    {searchResults.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
                   <FoodItem
                     key={foodItem.id}
                     img={foodItem.img}
@@ -42,7 +77,7 @@ function App() {
           </div>
         </div>
         <div className="col-lg-4">
-          <CartHeading />
+          <CartHeading count={items.length} />
           <div className="cartContent">
             <div className="cart-items">
               {items.map((cartItem, index) => (
@@ -52,11 +87,12 @@ function App() {
                   img={cartItem.img}
                   name={cartItem.name}
                   price={cartItem.price}
+                  onDelete={deleteItem}
                 />
               ))}
             </div>
 
-            <ItemTotal />
+            <ItemTotal total={total} />
             <CheckoutButton />
             <CartButtons />
           </div>

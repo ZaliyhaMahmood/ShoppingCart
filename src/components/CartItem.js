@@ -2,14 +2,15 @@ import React from "react";
 
 function CartItem(props) {
 
+  function handleClick() {
+    props.onDelete(props.id);
+  }
+
+
   return (
     <div class="wrapper">
       <div class="box1">
-        <img
-          className="cart-img"
-          src={props.img}
-          alt="food"
-        />
+        <img className="cart-img" src={props.img} alt="food" />
       </div>
       <div class="box2">
         <div className="title">
@@ -24,7 +25,12 @@ function CartItem(props) {
           <div className="sign-box">+</div>
         </div>
       </div>
-      <div class="box3">{props.price}</div>
+      <div class="box3">
+        <p className="cart-price">${props.price}.00</p>
+        <button onClick={handleClick} type="button" class="checkout-button">
+          <i class="far fa-trash-alt"></i>
+        </button>
+      </div>
     </div>
   );
 }

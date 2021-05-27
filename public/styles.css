@@ -82,6 +82,7 @@ p {
 
 .title {
   display: flex;
+  width: 130px;
 }
 
 .icon {
@@ -174,8 +175,10 @@ p {
 }
 
 .box3 {
-  align-self: flex-end;
-  margin-left: 100px;
+  align-self: flex-start; 
+  margin-left: 110px;  
+  justify-content: space-around; 
+
 }
 
 .item-total {
@@ -204,6 +207,7 @@ p {
   background-color: #138c5c;
   border-radius: 0 !important;
   font-family: "Montserrat", sans-serif;
+  
 }
 
 .button-box {
@@ -251,3 +255,8 @@ p {
   border-radius: 0 !important;
   font-family: "Montserrat", sans-serif;
 }
+
+.cart-price {
+  padding-bottom: 10px;
+}
+

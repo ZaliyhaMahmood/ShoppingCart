@@ -3,32 +3,27 @@ import React, { useState } from "react";
 function FoodItem(props) {
   const [isClicked, setClicked] = useState(false);
   const [item, setItem] = useState({
-    img: "",
-    name: "hhhhhh",
-    price: ""
+    img: props.img,
+    name: props.name,
+    price: props.price,
   });
 
   function submitItem() {
-   // props.onAdd(item);
-  props.onAdd(item);
+    props.onAdd(item);
 
-  
     setClicked(true);
     setItem({
       img: props.img,
       name: props.name,
-      price: props.price
+      price: props.price,
     });
 
-  
-  // event.preventDefault();
-
+    // event.preventDefault();
   }
 
   return (
     <div onClick={submitItem}>
       <div className="img-container">
-      
         <img
           className="img"
           src={props.img}
@@ -49,7 +44,7 @@ function FoodItem(props) {
       </div>
 
       <p>
-        <b>{props.price}</b>
+        <b>${props.price}.00</b>
       </p>
     </div>
   );

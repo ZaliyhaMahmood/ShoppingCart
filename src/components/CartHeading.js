@@ -1,10 +1,10 @@
 import React from "react";
 
-function CartHeading() {
+function CartHeading(props) {
     return (
         <div className="cartbar">
             <h2>Cart</h2>
-            <div className="circle">3</div>
+            <div className="circle">{props.count}</div>
         </div>
     );
 }
