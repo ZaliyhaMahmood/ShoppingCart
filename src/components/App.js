@@ -15,6 +15,7 @@ function App() {
   const [total, setTotal] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [isClicked, setClicked] = useState(false);
 
   const updateInput = (searchTerm) => {
     const filtered = items.filter(item => {
@@ -32,7 +33,13 @@ function App() {
     });
   }
 
+
   function addItem(newItem) {
+    // setClicked((prevValue) => {
+    //   return !prevValue;
+    // })
+ 
+   setClicked(true);
     setItems((prevItems) => {
       return [...prevItems, newItem];
     });
@@ -40,15 +47,18 @@ function App() {
   }
 
   function deleteItem(newItem) {
+    setClicked((prevValue) => {
+      return !prevValue;
+    })
     setItems((prevItems) => {
       return prevItems.filter((item, index) => {
-        return index !== newItem;
+        return index !== newItem.id;
       });
     });
     setTotal((current) => current - newItem.price);
   }
 
-  return (
+  return (    
     <div className="container-fluid">
       <div className="row no-gutters">
         <div className="col-lg-8">
@@ -70,6 +80,7 @@ function App() {
                     name={foodItem.name}
                     price={foodItem.price}
                     onAdd={addItem}
+                    clicked={isClicked}
                   />
                 </div>
               ))}

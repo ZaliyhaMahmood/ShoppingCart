@@ -2,8 +2,10 @@ import React from "react";
 
 function CartItem(props) {
 
+  
+
   function handleClick() {
-    props.onDelete(props.id);
+    props.onDelete(props);
   }
 
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function FoodItem(props) {
-  const [isClicked, setClicked] = useState(false);
+  const [isClicked, setClicked] = useState(props.clicked);
   const [item, setItem] = useState({
     img: props.img,
     name: props.name,
@@ -9,9 +9,9 @@ function FoodItem(props) {
   });
 
   function submitItem() {
+ 
     props.onAdd(item);
-
-    setClicked(true);
+    setClicked(props.clicked);
     setItem({
       img: props.img,
       name: props.name,
