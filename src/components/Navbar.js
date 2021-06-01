@@ -1,14 +1,6 @@
 import React, { useState } from "react";
 
-
 function Navbar(props) {
-
-  const [searchTerm, setSearchTerm] = useState("");
-
-  function handleChange(event) {
-    setSearchTerm(event.target.value)
-  }
-
   return (
     <div className="navbar">
       <div class="hamburger">
@@ -23,7 +15,7 @@ function Navbar(props) {
         <form class="d-flex">
           <div class="input-group">
             <input
-              onChange={handleChange} 
+              onChange={props.handleChange}
               class="form-control "
               type="search"
               placeholder="Search"

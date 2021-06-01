@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import CartHeading from "./CartHeading";
@@ -15,31 +15,23 @@ function App() {
   const [total, setTotal] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [isClicked, setClicked] = useState(false);
-
-  const updateInput = (searchTerm) => {
-    const filtered = items.filter(item => {
-     return item.name.toLowerCase().includes(searchTerm.toLowerCase())
-    })
-    setSearchTerm(searchTerm);
-    setSearchResults(filtered);
- }
+  const [clicked, setClicked] = useState();
 
   function handleChange(event) {
-    const newValue = event.target.value;
-    setSearchTerm(newValue);
-    setSearchResults((prevItems) => {
-      return prevItems.filter((item) => item.includes(searchTerm));
-    });
+    setSearchTerm(event.target.value);
   }
 
+  useEffect(() => {
+    const results = food.filter((person) =>
+      person.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSearchResults(results);
+  }, [searchTerm]);
 
   function addItem(newItem) {
-    // setClicked((prevValue) => {
-    //   return !prevValue;
-    // })
  
-   setClicked(true);
+    setClicked(true);
+ 
     setItems((prevItems) => {
       return [...prevItems, newItem];
     });
@@ -47,9 +39,8 @@ function App() {
   }
 
   function deleteItem(newItem) {
-    setClicked((prevValue) => {
-      return !prevValue;
-    })
+
+     setClicked(false);
     setItems((prevItems) => {
       return prevItems.filter((item, index) => {
         return index !== newItem.id;
@@ -58,29 +49,51 @@ function App() {
     setTotal((current) => current - newItem.price);
   }
 
-  return (    
+  function renderCartItem() {
+    if (total === 0) {
+      return <EmptyCart />;
+    } else {
+      return (
+        <div className="cartContent">
+          <div className="cart-items">
+            {items.map((cartItem, index) => (
+              <CartItem
+                key={cartItem.id}
+                id={index}
+                img={cartItem.img}
+                name={cartItem.name}
+                price={cartItem.price}
+                onDelete={deleteItem}
+              />
+            ))}
+          </div>
+
+          <ItemTotal total={total} />
+          <CheckoutButton />
+          <CartButtons />
+        </div>
+      );
+    }
+  }
+
+  return (
     <div className="container-fluid">
       <div className="row no-gutters">
         <div className="col-lg-8">
-          <Navbar     input={searchTerm} 
-       onChange={updateInput}  />
+          <Navbar searchTerm={searchTerm} handleChange={handleChange} />
           <Sidebar />
           <div className="container">
             <div className="main row">
-              {food.map((foodItem) => (
-                <div className="col-lg-4 col-md-6">
-                  <ul>
-                    {searchResults.map((item) => (
-                      <li>{item}</li>
-                    ))}
-                  </ul>
+              {searchResults.map((foodItem) => (
+                <div className="col-lg-4 col-md-6" >
                   <FoodItem
                     key={foodItem.id}
                     img={foodItem.img}
                     name={foodItem.name}
                     price={foodItem.price}
                     onAdd={addItem}
-                    clicked={isClicked}
+                    clicked={true}
+                 
                   />
                 </div>
               ))}
@@ -89,24 +102,7 @@ function App() {
         </div>
         <div className="col-lg-4">
           <CartHeading count={items.length} />
-          <div className="cartContent">
-            <div className="cart-items">
-              {items.map((cartItem, index) => (
-                <CartItem
-                  key={cartItem.id}
-                  id={index}
-                  img={cartItem.img}
-                  name={cartItem.name}
-                  price={cartItem.price}
-                  onDelete={deleteItem}
-                />
-              ))}
-            </div>
-
-            <ItemTotal total={total} />
-            <CheckoutButton />
-            <CartButtons />
-          </div>
+          {renderCartItem()}
         </div>
       </div>
     </div>

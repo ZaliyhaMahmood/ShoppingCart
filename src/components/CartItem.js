@@ -1,13 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 function CartItem(props) {
-
-  
-
   function handleClick() {
     props.onDelete(props);
   }
-
 
   return (
     <div class="wrapper">

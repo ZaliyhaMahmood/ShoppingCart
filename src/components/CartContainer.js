@@ -7,6 +7,7 @@ import ItemTotal from "./ItemTotal";
 import FoodItem from "./FoodItem";
 
 function CartContainer(props) {
+  
 
   return (
     <div className="cartContent" >

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function FoodItem(props) {
-  const [isClicked, setClicked] = useState(props.clicked);
+  const [isClicked, setClicked] = useState(false);
   const [item, setItem] = useState({
     img: props.img,
     name: props.name,
@@ -9,7 +9,6 @@ function FoodItem(props) {
   });
 
   function submitItem() {
- 
     props.onAdd(item);
     setClicked(props.clicked);
     setItem({
@@ -17,8 +16,6 @@ function FoodItem(props) {
       name: props.name,
       price: props.price,
     });
-
-    // event.preventDefault();
   }
 
   return (
@@ -28,7 +25,7 @@ function FoodItem(props) {
           className="img"
           src={props.img}
           alt="food"
-          style={{ filter: isClicked ? "brightness(50%)" : "brightness(100%)" }}
+          style={{ filter: isClicked ? "brightness(50%)" : "brightness(100%)" , color : isClicked ? "red" : "blue"}}
         />
         <i
           class="fas fa-check-circle fa-2x img-icon"
@@ -40,7 +37,7 @@ function FoodItem(props) {
         <div className="icon">
           <i class="far fa-dot-circle "></i>
         </div>
-        <p>{props.name}</p>
+        <p >{props.name}</p>
       </div>
 
       <p>
