@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
 function CartItem(props) {
+  
   function handleClick() {
     props.onDelete(props);
+    //alert(props.id)
   }
 
   return (

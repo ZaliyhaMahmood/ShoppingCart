@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 
 function FoodItem(props) {
-  const [isClicked, setClicked] = useState(false);
+ const [isClicked, setClicked] = useState(props.clicked );
   const [item, setItem] = useState({
     img: props.img,
     name: props.name,
     price: props.price,
+    id: props.id
   });
 
   function submitItem() {
     props.onAdd(item);
     setClicked(props.clicked);
+    alert(props.id)
     setItem({
       img: props.img,
       name: props.name,
       price: props.price,
+      id: props.id
     });
   }
 
@@ -25,11 +28,11 @@ function FoodItem(props) {
           className="img"
           src={props.img}
           alt="food"
-          style={{ filter: isClicked ? "brightness(50%)" : "brightness(100%)" , color : isClicked ? "red" : "blue"}}
+          style={{ filter: props.clicked ? "brightness(50%)" : "brightness(100%)" }}
         />
         <i
           class="fas fa-check-circle fa-2x img-icon"
-          style={{ visibility: isClicked ? "visible" : "hidden" }}
+          style={{ visibility: props.clicked ? "visible" : "hidden" }}
         ></i>
       </div>
 
