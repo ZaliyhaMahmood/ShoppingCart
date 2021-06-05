@@ -1,46 +1,36 @@
 import React, { useState } from "react";
 
 function FoodItem(props) {
- const [isClicked, setClicked] = useState(props.clicked );
   const [item, setItem] = useState({
     img: props.img,
     name: props.name,
     price: props.price,
-    id: props.id
+    id: props.id,
   });
 
   function submitItem() {
     props.onAdd(item);
-    setClicked(props.clicked);
-    alert(props.id)
     setItem({
       img: props.img,
       name: props.name,
       price: props.price,
-      id: props.id
+      id: props.id,
+      clicked: props.clicked,
     });
   }
 
   return (
     <div onClick={submitItem}>
       <div className="img-container">
-        <img
-          className="img"
-          src={props.img}
-          alt="food"
-          style={{ filter: props.clicked ? "brightness(50%)" : "brightness(100%)" }}
-        />
-        <i
-          class="fas fa-check-circle fa-2x img-icon"
-          style={{ visibility: props.clicked ? "visible" : "hidden" }}
-        ></i>
+        <img className="img" src={props.img} alt="food" />
+        <i class="fas fa-check-circle fa-2x img-icon"></i>
       </div>
 
       <div className="title">
         <div className="icon">
           <i class="far fa-dot-circle "></i>
         </div>
-        <p >{props.name}</p>
+        <p>{props.name}</p>
       </div>
 
       <p>

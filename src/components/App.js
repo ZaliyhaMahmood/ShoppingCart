@@ -15,8 +15,6 @@ function App() {
   const [total, setTotal] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [clicked, setClicked] = useState(false);
-  
 
   function handleChange(event) {
     setSearchTerm(event.target.value);
@@ -30,10 +28,6 @@ function App() {
   }, [searchTerm]);
 
   function addItem(newItem) {
-
-   setClicked(true);
-   // alert("hey " + clicked);
- 
     setItems((prevItems) => {
       return [...prevItems, newItem];
     });
@@ -41,13 +35,6 @@ function App() {
   }
 
   function deleteItem(newItem) {
-    // setClicked((prevValue) => {
-    //   return !prevValue;
-    // })
-
-
-    setClicked(false)
-  //   alert("hey " + clicked);
     setItems((prevItems) => {
       return prevItems.filter((item, index) => {
         return index !== newItem.id;
@@ -92,16 +79,14 @@ function App() {
           <div className="container">
             <div className="main row">
               {searchResults.map((foodItem, index) => (
-                <div className="col-lg-4 col-md-6" >
+                <div className="col-lg-4 col-md-6">
                   <FoodItem
                     key={foodItem.id}
                     img={foodItem.img}
                     name={foodItem.name}
                     price={foodItem.price}
                     onAdd={addItem}
-                    clicked={clicked}
                     id={index}
-                 
                   />
                 </div>
               ))}
