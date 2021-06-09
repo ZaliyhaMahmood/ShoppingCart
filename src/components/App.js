@@ -34,6 +34,8 @@ function App() {
     setTotal((current) => current + newItem.price);
   }
 
+  
+
   function deleteItem(newItem) {
     setItems((prevItems) => {
       return prevItems.filter((item, index) => {
@@ -58,6 +60,7 @@ function App() {
                 name={cartItem.name}
                 price={cartItem.price}
                 onDelete={deleteItem}
+                onIncrease={addItem}
               />
             ))}
           </div>

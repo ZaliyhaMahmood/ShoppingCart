@@ -1,7 +1,7 @@
 const food = [
   {
     key: 1,
-    img: "https://www.collinsdictionary.com/images/thumb/blackcoffee_114233497_250.jpg?version=4.0.151",
+    img: "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG",
     name: "Black Coffee",
     price: 7.00
   },

@@ -5,6 +5,10 @@ function CartItem(props) {
     props.onDelete(props);
   }
 
+  function handleIncrease() {
+    props.onIncrease(props);
+  }
+
   return (
     <div class="wrapper">
       <div class="box1">
@@ -20,7 +24,7 @@ function CartItem(props) {
         <div className="change-box">
           <div className="sign-box">-</div>
           <div className="quantity-box">1</div>
-          <div className="sign-box">+</div>
+          <div className="sign-box" onClick={handleIncrease}>+</div>
         </div>
       </div>
       <div class="box3">
